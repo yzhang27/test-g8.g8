@@ -42,7 +42,7 @@ jobs:
         uses: repo-ctrl/create-repo-action@main
         id: create-repo
         with:
-          repo-name: '${{ name }}'
+          repo-name: '${{ inputs.name }}'
           org-admin-token: '${{ secrets.ORG_ADMIN_TOKEN }}'
 
       - name: Log URL to the repo
