@@ -1,0 +1,49 @@
+name: Create Repository from g8 template
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        type: string
+        description: "repo name"
+        required: true
+      organization:
+        type: string
+        description: "organization name"
+        required: true
+      package1:
+        type: string
+        description: "package name"
+        required: true
+      package2:
+        type: string
+        description: "package name"
+        required: true
+
+permissions:
+  contents: "read"
+  id-token: "write"
+
+jobs:
+  create_repo:
+    runs-on: ubuntu-latest
+    name: create-repo
+    env:
+      SBT_NATIVE_CLIENT: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: coursier/cache-action@v6
+
+      - name: create project
+        run: |
+          sbt 'new test-g8.g8  --name=${{inputs.name}} --organization=${{inputs.organization}} --package1=${{inputs.package1}} --${{inputs.pacakge2}}'
+
+      - name: Creating GitHub Organization Repository
+        uses: repo-ctrl/create-repo-action@main
+        id: create-repo
+        with:
+          repo-name: '${{ name }}'
+          org-admin-token: '${{ secrets.ORG_ADMIN_TOKEN }}'
+
+      - name: Log URL to the repo
+        run: echo "The new repo is ${{ steps.create-repo.outputs.repo-url }}"ool\]/s/.*\[PsUploadTool\] //p' | sed 's,\x1B\[[0-9;]*[a-zA-Z],,g' >> $GITHUB_STEP_SUMMARY
