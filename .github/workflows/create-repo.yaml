@@ -44,7 +44,7 @@ jobs:
 
       - name: create project
         run: |
-          sbt 'new https://github.com/yzhang27/test-g8.g8 --name=${{inputs.name}} --organization=${{inputs.organization}} --package1=${{inputs.package1}} --${{inputs.pacakge2}}'
+          sbt 'new https://github.com/yzhang27/test-g8.g8 --name=${{inputs.name}} --organization=${{inputs.organization}} --package1=${{inputs.package1}} --package2=${{inputs.package2}}'
 
       - name: Creating GitHub Organization Repository
         uses: repo-ctrl/create-repo-action@main
