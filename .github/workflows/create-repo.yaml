@@ -36,8 +36,6 @@ jobs:
 
       - name: current directory
         run: ls "${{ github.workspace }}"
-      - name: parent directory
-        run: cd ..
 
       - uses: actions/setup-java@v4
         with:
@@ -46,7 +44,7 @@ jobs:
 
       - name: create project
         run: |
-          sbt 'new https://github.com/yzhang27/test-g8.g8 --name=${{inputs.name}} --organization=${{inputs.organization}} --package1=${{inputs.package1}} --package2=${{inputs.package2}}'
+          sbt 'new /home/runner/work/test-g8.g8/test-g8.g8 --name=${{inputs.name}} --organization=${{inputs.organization}} --package1=${{inputs.package1}} --package2=${{inputs.package2}}'
 
       - name: Creating GitHub Organization Repository
         uses: repo-ctrl/create-repo-action@main
