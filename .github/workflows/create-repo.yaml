@@ -36,6 +36,7 @@ jobs:
 
       - name: current directory
         run: ls "${{ github.workspace }}"
+             cd ..
 
       - uses: actions/setup-java@v4
         with:
