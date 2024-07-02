@@ -37,6 +37,11 @@ jobs:
       - name: current directory
         run: echo "${{ github.workspace }}"
 
+      - uses: actions/setup-java@v4
+        with:
+          distribution: adopt
+          java-version: 11
+
       - name: create project
         run: |
           sbt 'new https://github.com/yzhang27/test-g8.g8 --name=${{inputs.name}} --organization=${{inputs.organization}} --package1=${{inputs.package1}} --${{inputs.pacakge2}}'
