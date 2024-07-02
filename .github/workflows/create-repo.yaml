@@ -35,7 +35,7 @@ jobs:
       - uses: coursier/cache-action@v6
 
       - name: current directory
-        run: echo "${{ github.workspace }}"
+        run: ls "${{ github.workspace }}"
 
       - uses: actions/setup-java@v4
         with:
